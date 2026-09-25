@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moorent Pm — Borgo degli Albizi · Per Davide Torriero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --nero:#232323; --grigio:#ACA5A5; --rosa:#F3DFD9; --bianco:#FFFFFF;
+    --cream:#FAF7F5; --rosso:#B5504B; --verde:#5C8A6A; --ambra:#8A6A3E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--nero);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;}
+  .mono{font-family:'DM Mono',monospace;}
+
+  .hero{position:relative;background:var(--nero);color:var(--bianco);padding:64px 8vw 72px;overflow:hidden;}
+  .hero::before{content:"";position:absolute;inset:0;background-image:
+    radial-gradient(circle at 15% 25%, rgba(243,223,217,0.10) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(243,223,217,0.07) 0%, transparent 45%);pointer-events:none;}
+  .hero-inner{position:relative;max-width:980px;}
+  .brand-row{display:flex;align-items:center;gap:14px;margin-bottom:40px;}
+  .brand-mark{font-weight:700;font-size:0.95rem;letter-spacing:0.14em;}
+  .brand-mark span{color:var(--grigio);font-weight:400;}
+  .brand-divider{width:1px;height:16px;background:rgba(255,255,255,0.25);}
+  .brand-sub{font-size:0.75rem;color:var(--grigio);letter-spacing:0.08em;text-transform:uppercase;}
+  .hero-eyebrow{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--rosa);margin-bottom:16px;font-weight:500;}
+  .hero h1{font-size:clamp(2.2rem,4.6vw,3.3rem);font-weight:500;line-height:1.1;margin-bottom:18px;}
+  .hero h1 em{font-style:italic;color:var(--rosa);}
+  .hero-sub{font-size:1rem;color:rgba(255,255,255,0.78);max-width:680px;}
+  .hero-meta{display:flex;gap:34px;margin-top:36px;flex-wrap:wrap;}
+  .hm .num{font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--rosa);font-weight:500;}
+  .hm .lab{font-size:0.7rem;color:var(--grigio);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;}
+
+  .section{padding:52px 8vw;max-width:1180px;margin:0 auto;}
+  .section-title{font-size:1.85rem;font-weight:500;margin-bottom:8px;}
+  .section-lead{color:#5c5555;max-width:700px;font-size:0.95rem;margin-bottom:30px;}
+
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  @media(max-width:760px){.duo{grid-template-columns:1fr;}}
+  .unit-card{background:var(--bianco);border:1px solid #ECE4E1;border-radius:2px;padding:28px 30px;}
+  .unit-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;color:var(--grigio);background:var(--cream);padding:4px 10px;border-radius:20px;margin-bottom:12px;}
+  .unit-name{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:500;}
+  .unit-sub{font-size:0.82rem;color:var(--grigio);margin-bottom:18px;}
+  .kv{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed #EDE5E2;font-size:0.9rem;gap:14px;}
+  .kv:last-child{border-bottom:none;}
+  .kv .k{color:#6b6363;}
+  .kv .v{font-weight:500;text-align:right;}
+  .kv .v.mono{font-size:0.85rem;}
+  .badge{display:inline-block;font-size:0.7rem;padding:4px 12px;border-radius:20px;font-weight:500;margin-top:14px;}
+  .b-ok{background:#E7F0EA;color:var(--verde);}
+  .b-warn{background:#F6EDE0;color:var(--ambra);}
+  .b-bad{background:#F5E6E5;color:var(--rosso);}
+
+  .assumption-box{background:var(--bianco);border:1px solid #ECE4E1;border-left:3px solid var(--rosa);padding:26px 30px;margin-top:26px;}
+  .assumption-box h4{font-family:'DM Sans',sans-serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--grigio);margin-bottom:12px;}
+  .assumption-box li{font-size:0.88rem;margin-left:18px;padding:4px 0;color:#413c3c;}
+  .assumption-box li b{color:var(--nero);}
+  .assumption-box p{font-size:0.88rem;color:#413c3c;}
+  .assumption-box p b{color:var(--nero);}
+
+  .table-wrap{overflow-x:auto;border:1px solid #ECE4E1;background:var(--bianco);}
+  table{width:100%;border-collapse:collapse;min-width:640px;}
+  th{background:var(--nero);color:var(--bianco);font-weight:500;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;padding:13px 16px;text-align:left;}
+  th.r, td.r{text-align:right;}
+  td{padding:12px 16px;font-size:0.88rem;border-bottom:1px solid #F1EBE8;}
+  tr:last-child td{border-bottom:none;}
+  td.num{font-family:'DM Mono',monospace;font-size:0.84rem;}
+  td.neg{color:var(--rosso);}
+  tr.total td{background:var(--rosa);font-weight:700;border-top:2px solid var(--nero);}
+  tr.sub td{background:#FCFAF9;font-style:italic;color:#6b6363;}
+  .caveat{font-size:0.8rem;color:var(--grigio);margin-top:14px;padding-left:16px;border-left:2px solid var(--rosa);font-style:italic;max-width:760px;}
+
+  .payback-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px;}
+  @media(max-width:760px){.payback-grid{grid-template-columns:1fr;}}
+  .pb-card{background:var(--bianco);border:1px solid #ECE4E1;padding:26px;text-align:center;}
+  .pb-card.hl{border-color:var(--nero);border-width:2px;}
+  .pb-scenario{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--grigio);margin-bottom:8px;}
+  .pb-years{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:500;line-height:1;}
+  .pb-years.bad{color:var(--rosso);}
+  .pb-years.warn{color:var(--ambra);}
+  .pb-years.good{color:var(--verde);}
+  .pb-note{font-size:0.78rem;color:#6b6363;margin-top:10px;}
+
+  .verdict{background:var(--nero);color:var(--bianco);padding:60px 8vw;position:relative;overflow:hidden;}
+  .verdict::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 50% 0%, rgba(243,223,217,0.08) 0%, transparent 55%);}
+  .verdict-inner{position:relative;max-width:820px;margin:0 auto;}
+  .verdict h2{font-size:2rem;font-weight:500;margin-bottom:20px;}
+  .verdict h2 em{color:var(--rosa);font-style:italic;}
+  .verdict p{color:rgba(255,255,255,0.8);font-size:0.95rem;margin-bottom:16px;}
+  .verdict p b{color:var(--rosa);}
+  .lever{border-top:1px solid rgba(255,255,255,0.12);padding:14px 0 14px 24px;position:relative;font-size:0.9rem;color:rgba(255,255,255,0.85);}
+  .lever::before{content:"→";position:absolute;left:0;color:var(--rosa);}
+  .lever b{color:var(--bianco);}
+
+  footer{padding:26px 8vw;text-align:center;font-size:0.72rem;color:var(--grigio);letter-spacing:0.04em;}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="brand-row">
+      <div class="brand-mark"><b>MOORENT</b> <span>Pm</span></div>
+      <div class="brand-divider"></div>
+      <div class="brand-sub">Valutazione pre-sopralluogo · Per Davide Torriero</div>
+    </div>
+    <div class="hero-eyebrow">Cessione attività ricettiva · Borgo degli Albizi 59, Firenze</div>
+    <h1>Cosa sappiamo,<br>prima del <em>sopralluogo</em></h1>
+    <p class="hero-sub">Due case vacanza a pochi metri dal Duomo, quasi 200 mq totali. Prima di fissare la visita, mettiamo insieme quello che l'annuncio e lo storico condiviso dal proprietario ci dicono davvero — e quello che invece resta da verificare di persona.</p>
+    <div class="hero-meta">
+      <div class="hm"><div class="num">€ 68.000</div><div class="lab">Buonuscita indicativa</div></div>
+      <div class="hm"><div class="num">€ 58.680</div><div class="lab">Canone annuo (2 unità)</div></div>
+      <div class="hm"><div class="num">~4 anni</div><div class="lab">Orizzonte da annuncio (scad. 2030, da confermare se rinnovabile)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DATI ===== -->
+<section class="section">
+  <h2 class="section-title">I numeri su cui si fonda l'analisi</h2>
+  <p class="section-lead">Nessun export prenotazioni né recensioni, per ora: solo lo storico annuale di fatturato condiviso dal proprietario (dati lordi, due anni) e la scheda tecnica dell'agenzia IKAROS. Li trattiamo come punto di partenza, non come verifica.</p>
+
+  <div class="duo">
+    <div class="unit-card">
+      <span class="unit-tag">UNITÀ 1 · DUPLEX · ~50 MQ</span>
+      <div class="unit-name">In crescita</div>
+      <div class="unit-sub">Zona giorno + angolo cottura, soppalco con zona notte, 1 bagno</div>
+      <div class="kv"><span class="k">Fatturato ago24–lug25</span><span class="v mono">€ 25.061</span></div>
+      <div class="kv"><span class="k">Fatturato ago25–lug26</span><span class="v mono">€ 28.125</span></div>
+      <div class="kv"><span class="k">Variazione</span><span class="v mono">+12%</span></div>
+      <span class="badge b-ok">Unica delle due in crescita</span>
+    </div>
+    <div class="unit-card">
+      <span class="unit-tag">UNITÀ 2 · ~140 MQ · 3 CAMERE</span>
+      <div class="unit-name">In calo, da attenzionare</div>
+      <div class="unit-sub">Ingresso, cucinotto, 3 camere (2 matrimoniali + 1 singola), 2 bagni</div>
+      <div class="kv"><span class="k">Fatturato ago24–lug25</span><span class="v mono">€ 50.337</span></div>
+      <div class="kv"><span class="k">Fatturato ago25–lug26*</span><span class="v mono">€ 35.183</span></div>
+      <div class="kv"><span class="k">Variazione (dato grezzo)</span><span class="v mono">−30%</span></div>
+      <span class="badge b-warn">Causa del calo da verificare</span>
+    </div>
+  </div>
+  <p class="caveat">*Chiusa ~2 mesi per interventi nell'anno più recente, mesi esatti non ancora noti. Se i due mesi chiusi erano tra quelli di punta, la chiusura può spiegare l'intero calo: su Pitti 13, dove abbiamo il dettaglio mensile reale, i 2 mesi migliori hanno fatturato circa 2,1 volte la media degli altri dieci — un rapporto simile spiegherebbe per intero il calo qui. Resta comunque un punto da attenzionare e verificare con dati reali (calendario prenotazioni, mesi esatti di chiusura), non da dare per assodato in nessuna delle due direzioni.</p>
+
+  <div class="assumption-box">
+    <h4>La leva dichiarata dal proprietario</h4>
+    <p>La doppia apertura dell'Unità 2 è confermata reale — può essere sfruttata come due unità autonome senza bisogno di nuova licenza. Non è però mai stata operativamente utilizzata in questo modo: la resa che potrebbe generare resta una stima, non uno storico. Il proprietario indica un potenziale complessivo per le due case, a gestione ricettiva professionale, nell'ordine di <b>€110.000–120.000/anno</b> di fatturato lordo.</p>
+  </div>
+</section>
+
+<!-- ===== STORICO VS POTENZIALE ===== -->
+<section class="section" style="padding-top:8px;">
+  <h2 class="section-title">Storico dimostrato vs potenziale dichiarato</h2>
+  <p class="section-lead">Cinque letture dello stesso conto: i due anni storici, l'anno più recente corretto per la chiusura, e i due estremi del range indicato dal proprietario. Costi di gestione (canone, utenze, manutenzione, gestione operativa) stimati sulla base degli altri immobili seguiti per Davide — da verificare, come sempre, con dati reali.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Scenario</th><th class="r">Fatturato lordo</th><th class="r">Costi di gestione (stima)</th><th class="r">Margine per Davide</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Storico — anno 24-25</td><td class="num r">€ 75.397</td><td class="num r neg">− 78.010</td><td class="num r neg">− € 15.808</td></tr>
+        <tr><td>Storico — anno 25-26*</td><td class="num r">€ 63.308</td><td class="num r neg">− 76.514</td><td class="num r neg">− € 24.285</td></tr>
+        <tr class="sub"><td>Storico 25-26, se chiusura in bassa stagione (stima min.)</td><td class="num r">€ 70.345</td><td class="num r neg">− 77.385</td><td class="num r neg">− € 19.351</td></tr>
+        <tr class="sub"><td>Storico 25-26, se chiusura in alta stagione (stima max., ≈ anno 24-25)</td><td class="num r">€ 75.397</td><td class="num r neg">− 78.010</td><td class="num r neg">− € 15.808</td></tr>
+        <tr><td>Potenziale dichiarato — lato basso</td><td class="num r">€ 110.000</td><td class="num r neg">− 82.292</td><td class="num r">€ 8.458</td></tr>
+        <tr class="total"><td>Potenziale dichiarato — lato alto</td><td class="num r">€ 120.000</td><td class="num r neg">− 83.530</td><td class="num r">€ 15.470</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="caveat">In nessuna lettura dello storico l'operazione regge il canone. Solo il potenziale dichiarato dal proprietario — mai dimostrato su questo immobile — la porta in positivo.</p>
+</section>
+
+<!-- ===== PAYBACK ===== -->
+<section class="section" style="padding-top:8px;">
+  <h2 class="section-title">Il punto critico: un orizzonte di soli 4 anni</h2>
+  <p class="section-lead">A differenza degli altri immobili in valutazione, l'annuncio IKAROS dichiara il contratto in scadenza nel 2030 — non un 4+4 rinnovabile. Non ancora confermato con l'agenzia: è tra i punti da chiarire nella telefonata di lunedì. Nel frattempo, ecco quanto ci metterebbe a rientrare la buonuscita di €68.000 se l'orizzonte fosse davvero questo, scenario per scenario.</p>
+
+  <div class="payback-grid">
+    <div class="pb-card">
+      <div class="pb-scenario">Storico (entrambi gli anni)</div>
+      <div class="pb-years bad">Non rientra</div>
+      <div class="pb-note">Margine negativo in entrambi gli anni: il canone da solo supera il fatturato netto stimato.</div>
+    </div>
+    <div class="pb-card hl">
+      <div class="pb-scenario">Potenziale — lato basso</div>
+      <div class="pb-years bad">~8 anni</div>
+      <div class="pb-note">Il doppio dell'orizzonte disponibile: anche centrando il potenziale dichiarato, a questo livello non rientra prima della scadenza.</div>
+    </div>
+    <div class="pb-card">
+      <div class="pb-scenario">Potenziale — lato alto</div>
+      <div class="pb-years warn">~4,4 anni</div>
+      <div class="pb-note">Il caso migliore possibile, e resta leggermente sopra i 4 anni disponibili.</div>
+    </div>
+  </div>
+  <p class="caveat">Solo centrando la parte alta del range dichiarato dal proprietario il payback si avvicina all'orizzonte contrattuale — senza margine di sicurezza.</p>
+</section>
+
+<!-- ===== COSA VERIFICARE ===== -->
+<section class="section" style="padding-top:8px;">
+  <h2 class="section-title">Perché serve vedere annunci e immobile, non solo i numeri</h2>
+  <p class="section-lead">Fino a quando non guardiamo gli annunci pubblicati e l'immobile di persona, possiamo credere a quello che vogliamo sul motivo del divario tra storico e potenziale. Come sempre, decidiamo sui dati oggettivi — e quei dati, per ora, non li abbiamo ancora tutti.</p>
+
+  <div class="assumption-box" style="margin-top:0;">
+    <h4>Cosa dirà il sopralluogo che i numeri da soli non dicono</h4>
+    <ul>
+      <li><b>Gli annunci sono gestiti bene o male?</b> Foto, descrizioni, prezzo per notte, calendario, numero e qualità delle recensioni: se gli annunci sono trascurati, il divario verso il potenziale è un problema esecutivo — lo stesso tipo di gap già risolto su altri immobili seguiti per Davide. Se invece sono già curati, il potenziale dichiarato va ridimensionato.</li>
+      <li><b>Il contratto è davvero a scadenza fissa 2030, o c'è un rinnovo tipo 4+4?</b> È la scheda IKAROS a dichiararlo come termine fisso, ma non l'abbiamo verificato con l'agenzia — cambia radicalmente l'orizzonte di rientro della buonuscita, quindi va chiarito direttamente, non dato per assodato dall'annuncio.</li>
+      <li><b>Quali sono stati esattamente i 2 mesi di chiusura dell'Unità 2</b>, oltre alla chiusura per interventi — se erano mesi di alta stagione la chiusura può spiegare l'intero calo, se erano bassa stagione il calo resta in parte da capire.</li>
+      <li><b>Le "finiture di pregio" e i "piccoli ritocchi estetici"</b> dichiarati dall'agenzia sono la stessa formula vista su altri immobili — vanno giudicati di persona, non presi per buoni.</li>
+      <li><b>Su cosa si basa la stima di €110-120.000</b> — quale ADR e quale occupancy assume il proprietario. Senza saperlo, non possiamo giudicare se è un obiettivo raggiungibile o un numero costruito per giustificare la buonuscita.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== POSIZIONE ===== -->
+<section class="verdict">
+  <div class="verdict-inner">
+    <h2>Prima i dati, <em>poi la decisione</em></h2>
+    <p>La posizione — a pochi metri da Duomo e Signoria — è probabilmente la migliore tra gli immobili visti finora per Davide. Ma lo storico dimostrato, in entrambi gli anni disponibili, <b>non copre nemmeno il canone</b>: il potenziale di €110-120.000 è, per ora, una dichiarazione del proprietario, non un dato.</p>
+    <p>Fino a quando non vediamo gli annunci reali e l'immobile, possiamo credere a quello che vogliamo su quanto di quel divario sia recuperabile. Non decidiamo su questo — <b>decidiamo sui dati oggettivi</b>, come sempre.</p>
+    <div style="margin-top:28px;">
+      <div class="lever"><b>Telefonata lunedì con l'agente:</b> chiarire se il contratto è davvero a scadenza fissa 2030 o prevede un rinnovo tipo 4+4, i mesi esatti di chiusura dell'Unità 2, gli annunci pubblicati (link diretti) e su cosa si basa la stima di €110-120.000 — ADR e occupancy assunti, non solo la cifra finale.</div>
+      <div class="lever"><b>Durante il sopralluogo:</b> valutare lo stato reale delle finiture, verificare la reale indipendenza operativa delle due unità nella doppia apertura.</div>
+      <div class="lever"><b>Il metro di giudizio:</b> il sopralluogo ha senso se conferma che il divario tra storico e potenziale è dovuto a una gestione degli annunci migliorabile — lo stesso margine trovato altrove. Se invece gli annunci risultano già curati, il potenziale dichiarato va preso con grande cautela.</div>
+    </div>
+  </div>
+</section>
+
+<footer>MOORENT PM · Valutazione pre-sopralluogo · Borgo degli Albizi 59, Firenze · Basata su scheda tecnica IKAROS Real Estate e storico fatturato condiviso dal proprietario</footer>
+
+</body>
+</html>
